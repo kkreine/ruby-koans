@@ -15,7 +15,16 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  a, b, c = [a, b, c].sort
+
+  # Raise error if there are zeros, negatives, or 
+  # if the sum of two sides is less than the third
+  raise TriangleError if a <= 0 || a + b <= c
+
+  [nil, :equilateral, :isosceles, :scalene][[a, b, c].uniq.size]
+  
 end
+
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError < StandardError
